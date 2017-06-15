@@ -21,6 +21,7 @@ class JavaMonkeyPatchPlugin implements Plugin<Project> {
             extensions.add('monkeyPatch', new MonkeyPatchExtension(project))
             afterEvaluate {
                 boolean initialized = project.extensions.getByType(MonkeyPatchExtension).initialized
+                if (!initialized) throw new RuntimeException("monkeyPatch.target not initialized")
             }
 
         }
