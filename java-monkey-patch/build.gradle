@@ -1,0 +1,9 @@
+group = 'com.lazan'
+version = '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+
+dependencies {
+	compile localGroovy()
+	compile gradleApi()
+}

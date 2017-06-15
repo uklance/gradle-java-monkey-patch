@@ -1,0 +1,3 @@
+includeBuild 'java-monkey-patch'
+include 'spring-patch'
+include 'spring-patch-consumer'

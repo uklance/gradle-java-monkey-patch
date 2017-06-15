@@ -1,0 +1,11 @@
+buildscript {
+	dependencies {
+		classpath 'com.lazan:java-monkey-patch:1.0-SNAPSHOT'
+	}
+}
+
+apply plugin: 'com.lazan.java-monkey-patch'
+
+monkeyPatch {
+	target = 'org.springframework:spring-context:4.3.9.RELEASE'
+}
