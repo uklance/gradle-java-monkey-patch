@@ -68,7 +68,7 @@ class JavaMonkeyPatchPlugin implements Plugin<Project> {
                 }
 
                 depSet.each { Map dependency ->
-                    println "Adding $dependency"
+                    logger.info "Adding $dependency"
                     dependencies.compile(dependency) {
                         transitive = false
                     }
@@ -82,7 +82,7 @@ class JavaMonkeyPatchPlugin implements Plugin<Project> {
                             def output = sourceSets.main.output
                             boolean patched = new File(output.classesDir, path).exists() || new File(output.resourcesDir, path).exists()
                             if (patched) {
-                                println "Using patched version of $path"
+                                logger.info "Using patched version of $path"
                                 action.exclude()
                             }
                         }

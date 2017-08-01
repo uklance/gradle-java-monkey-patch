@@ -22,6 +22,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.Assert;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * Standalone XML application context, taking the context definition files
  * from the class path, interpreting plain paths as class path resource names
@@ -60,7 +64,13 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 	 * @see #afterPropertiesSet()
 	 */
 	public ClassPathXmlApplicationContext() {
-		System.out.println("*** monkey patched ClassPathXmlApplicationContext constructor ***");
+		File testFile = new File(System.getProperty("monkey-patch-test-file"));
+		try (PrintWriter writer = new PrintWriter(testFile)) {
+			System.out.println("ClassPathXmlApplicationContext: writing to " + testFile);
+			writer.println("foo");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
