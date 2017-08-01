@@ -6,6 +6,8 @@ import org.gradle.api.artifacts.ModuleVersionIdentifier
 import org.gradle.api.artifacts.ResolvedArtifact
 import org.gradle.api.artifacts.ResolvedDependency
 import org.gradle.api.file.FileCopyDetails
+import org.gradle.api.tasks.SourceSetOutput
+
 import java.util.*
 
 
@@ -79,8 +81,14 @@ class JavaMonkeyPatchPlugin implements Plugin<Project> {
                         from zipTree(configurations.monkeyPatchNonTransitive.singleFile)
                         eachFile { FileCopyDetails action ->
                             String path = action.relativePath.pathString
-                            def output = sourceSets.main.output
-                            boolean patched = new File(output.classesDir, path).exists() || new File(output.resourcesDir, path).exists()
+                            SourceSetOutput output = sourceSets.main.output
+
+                            // see if overridden by a class
+                            boolean patched = output.classesDirs.files.any { new File(it, path).exists() }
+                            if (!patched) {
+                                // see if overridden by a resource
+                                patched = new File(output.resourcesDir, path).exists()
+                            }
                             if (patched) {
                                 logger.info "Using patched version of $path"
                                 action.exclude()
