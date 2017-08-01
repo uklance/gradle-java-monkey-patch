@@ -1,9 +1,26 @@
+plugins {
+	id 'groovy'
+	id 'com.gradle.plugin-publish' version '0.9.5'
+}
+
 group = 'com.lazan'
 version = file('../version.txt').text.trim()
-
-apply plugin: 'groovy'
 
 dependencies {
 	compile localGroovy()
 	compile gradleApi()
+}
+
+pluginBundle {
+	website = 'https://github.com/uklance/gradle-java-monkey-patch'
+	vcsUrl = 'https://github.com/uklance/gradle-java-monkey-patch.git'
+	description = 'Create a patch jar by combining classes and resources from a dependency with classes and resources defined in a project'
+	tags = ['patch', 'monkey-patch']
+
+	plugins {
+		mavenSharePlugin {
+			id = 'com.lazan.java-monkey-patch'
+			displayName = 'Gradle Java Monkey Patch'
+		}
+	}
 }
