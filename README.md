@@ -1,4 +1,4 @@
-# gradle-java-monkey-patch
+# gradle-java-monkey-patch [![Build Status](https://travis-ci.org/uklance/gradle-java-monkey-patch.svg?branch=master)](https://travis-ci.org/uklance/gradle-java-monkey-patch)
 
 Create a monkey patch jar by combining classes and resources from a target dependency (jar) with classes and resources from the project. The project will inherit the transitive dependencies from the target so it's a drop-in replacement for the target jar.
 
