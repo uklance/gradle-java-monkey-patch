@@ -1,6 +1,6 @@
 # gradle-java-monkey-patch
 
-Create a monkey patch jar by combining class and resources from a target dependency with resources and classes in the project.
+Create a monkey patch jar by combining classes and resources from a target dependency (jar) with classes and resources from the project. The project will inherit the transitive dependencies from the target so it's a drop-in replacement for the target jar.
 
 ## Usage:
 
