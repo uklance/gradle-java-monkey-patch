@@ -1,6 +1,7 @@
 buildscript {
+	def pluginVersion = file('../version.txt').text.trim()
 	dependencies {
-		classpath 'com.lazan:java-monkey-patch:1.0-SNAPSHOT'
+		classpath "com.lazan:java-monkey-patch:$pluginVersion"
 	}
 }
 

@@ -1,5 +1,5 @@
 group = 'com.lazan'
-version = '1.0-SNAPSHOT'
+version = file('../version.txt').text.trim()
 
 apply plugin: 'groovy'
 
