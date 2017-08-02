@@ -5,7 +5,10 @@ Create a monkey patch jar by combining classes and resources from a target depen
 ## Usage:
 
 ```groovy
-apply plugin: 'com.lazan.java-monkey-patch'
+plugins {
+    id "com.lazan.java-monkey-patch" version "1.0"
+}
+
 
 monkeyPatch {
     target = 'org.springframework:spring-context:4.3.9.RELEASE'
