@@ -9,7 +9,6 @@ plugins {
     id "com.lazan.java-monkey-patch" version "1.0"
 }
 
-
 monkeyPatch {
     target = 'org.springframework:spring-context:4.3.9.RELEASE'
 }
