@@ -46,7 +46,7 @@ class JavaMonkeyPatchPlugin implements Plugin<Project> {
                 dependencies {
                     monkeyPatchTransitive target
                     monkeyPatchNonTransitive target
-                    compileOnly(target) {
+                    implementation(target) {
                         transitive = false
                     }
                 }
@@ -71,8 +71,10 @@ class JavaMonkeyPatchPlugin implements Plugin<Project> {
 
                 depSet.each { Map dependency ->
                     logger.info "Adding $dependency"
-                    dependencies.compile(dependency) {
-                        transitive = false
+                    dependencies {
+                        implementation(dependency) {
+                            transitive = false
+                        }
                     }
                 }
 
